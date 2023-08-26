@@ -126,14 +126,14 @@ DeployWithoutFuncPack() {
     # 1. Install function extensions
     InstallFunctionExtensions "$DEPLOYMENT_SOURCE"
 
-    # 2. KuduSync
+    # 2. Restore npm
+    RestoreNpmPackages "$DEPLOYMENT_TARGET"
+
+    # 3. KuduSync
     if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
       "$KUDU_SYNC_CMD" -v 50 -f "$DEPLOYMENT_SOURCE" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.hg;.deployment;deploy.sh;obj"
       exitWithMessageOnError "Kudu Sync failed"
     fi
-
-    # 3. Restore npm
-    RestoreNpmPackages "$DEPLOYMENT_TARGET"
 }
 
 DeployWithoutFuncPack
