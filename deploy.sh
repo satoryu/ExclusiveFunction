@@ -85,7 +85,7 @@ RunNpm() {
     echo Restoring npm packages in $1
 
     pushd $1 > /dev/null
-    eval $NPM_CMD install --production 2>&1
+    eval $NPM_CMD install --production --force 2>&1
     exitWithMessageOnError "Npm Install Failed"
     popd > /dev/null
 }
