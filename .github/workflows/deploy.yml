@@ -12,7 +12,7 @@ jobs:
         with:
           node-version: '18'
       - run: npm install
-      - uses: Azure/functions-action@v1.5
+      - uses: Azure/functions-action@v1
         with:
           app-name: ${{ vars.AZURE_FUNCTIONAPP_NAME }}
           package: '.'
