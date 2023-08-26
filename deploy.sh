@@ -127,7 +127,7 @@ DeployWithoutFuncPack() {
     InstallFunctionExtensions "$DEPLOYMENT_SOURCE"
 
     # 2. Restore npm
-    RestoreNpmPackages "$DEPLOYMENT_TARGET"
+    RestoreNpmPackages "$DEPLOYMENT_SOURCE"
 
     # 3. KuduSync
     if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
